@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro – Trash Transformers</title>
+  <link rel="icon" href="Logo Trash Transformers SEM FUNDO.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-light:   #7ed957;
+      --green-light2:  #aec6b3;
+      --green-dark:    #0c8e55;
+      --blue-dark:     #2f5bb7;
+      --accent:        #26a668;
+      --input-bg:      #c0efba;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html, body { height:100%; font-family: Arial, sans-serif; }
+    body {
+      background: linear-gradient(135deg, var(--green-light), var(--green-light2));
+    }
+
+    .wrapper {
+      display: flex;
+      width: 90%;
+      max-width: 1600px;
+      height: 90vh;
+      margin: 5vh auto;   
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .side-left {
+      flex: 3;
+      position: relative;
+      background: linear-gradient(to bottom, var(--green-dark), var(--blue-dark));
+      color: #fff;
+      overflow: hidden;
+    }
+    .side-left h1 {
+      position: absolute;
+      top: 15%;
+      left: 15%;
+      font-family: 'League Spartan', sans-serif;
+      font-size: 4rem;
+    }
+    .side-left .illustration {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 550px;
+      height: auto;
+    }
+    .side-left .info {
+      position: absolute;
+      top: 50%;
+      left: 370px; 
+      transform: translateY(-50%);
+      max-width: 500px;
+      padding: 0 1rem;
+    }
+    .side-left .info h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .side-left .info p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .side-right {
+      flex: 2;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .form-box {
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+    .form-box .logo {
+      width: 80px;
+      margin-bottom: 1.5rem;
+    }
+    .form-box h2 {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--accent);
+      font-size: 1.75rem;
+      margin-bottom: 1.75rem;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .input-group .icon {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 3rem;
+      border: none;
+      border-radius: 25px;
+      background: var(--input-bg);
+      font-size: 1rem;
+    }
+    .form-box button {
+      width: 80%;
+      max-width: 280px;
+      margin: 1.25rem auto 0;
+      padding: 0.75rem 0;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(to right, var(--green-light), var(--green-light2));
+      color: #000000;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .form-box button:enabled {
+      opacity: 1;
+    }
+    .form-box .signin {
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .form-box .signin a {
+      color: #2f5bb7;
+      text-decoration: none;
+    }
+
+    /* RESPONSIVIDADE DA PÁGINA */
+
+    @media (max-width: 880px) {
+    .side-left h1 {
+        font-size: 3.8rem;
+        left: 6%;
+      }
+    
+      .side-left .illustration {
+        width: 400px;
+      }
+
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+      }
+
+    .side-left {
+        display: none;
+    }
+
+    .input-group {
+    position: relative;
+    margin-bottom: 1.5rem; 
+    }
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Painel colorido -->
+    <div class="side-left">
+      <h1>Trash Transformers</h1>
+      <img src="Familia Certa.png" alt="Ilustração sustentabilidade" class="illustration">
+      <div class="info">
+      </div>
+    </div>
+
+    <!-- Painel branco -->
+    <div class="side-right">
+      <form class="form-box" id="registerForm">
+        <img src="Logo Trash Transformers SEM FUNDO.png" alt="Logo" class="logo">
+        <h2>Cadastro de Usuário</h2>
+
+        <div class="input-group">
+          <span class="icon">👤</span>
+          <input type="text" id="nome" placeholder="Nome completo" required>
+        </div>
+        <div class="input-group">
+          <span class="icon">✉️</span>
+          <input type="email" id="email" placeholder="E-mail" required>
+        </div>
+        <div class="input-group">
+          <span class="icon">🆔</span>
+          <input type="text" id="matricula" placeholder="Matrícula" required>
+        </div>
+        <div class="input-group">
+          <span class="icon">🔒</span>
+          <input type="password" id="senha" placeholder="Senha" required>
+        </div>
+        <div class="input-group">
+          <span class="icon">🔒</span>
+          <input type="password" id="confirmSenha" placeholder="Confirmar senha" required>
+        </div>
+
+        <button type="submit" id="registerBtn" disabled>Cadastrar</button>
+        <div class="signin">
+          Já tem uma conta? <a href="login.html">Entrar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    const btn  = document.getElementById('registerBtn');
+    const inputs = Array.from(form.querySelectorAll('input'));
+
+    function checkValidity() {
+      const allFilled = inputs.every(i => i.value.trim() !== '');
+      const senhasIguais = form.senha.value === form.confirmSenha.value;
+      btn.disabled = !(allFilled && senhasIguais);
+    }
+    inputs.forEach(i => i.addEventListener('input', checkValidity));
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const dados = {
+        nome: form.nome.value,
+        email: form.email.value,
+        matricula: form.matricula.value,
+        senha: form.senha.value
+      };
+
+      fetch('http://localhost:8080/usuarios', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Erro ao cadastrar usuário.');
+        return res.json();
+      })
+      .then(data => {
+        console.log('Cadastro feito:', data);
+        alert('Usuário cadastrado com sucesso!');
+        form.reset();
+        btn.disabled = true;
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Erro ao cadastrar usuário.');
+      });
+    });
+  </script>
+</body>
+</html>

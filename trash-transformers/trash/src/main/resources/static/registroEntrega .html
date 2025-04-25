@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Trash Transformers - Registrar Resíduo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      position: relative;
+      min-height: 100vh;
+      background-color: #ffffff;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Fundo verde e branco como background */
+    .fundo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('Fundo Home.png') no-repeat center;
+      background-size: cover;
+      z-index: 0;
+    }
+
+    /* Casal reciclando sobreposto */
+    .casal {
+      position: absolute;
+      bottom: 0;
+      left: 80%;
+      transform: translateX(-50%);
+      width: 70%;
+      max-width: 700px;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 80px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-weight: bold;
+      color: #2c6e49;
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 30px 20px;
+      margin-top: auto;
+    }
+
+    /* Retângulo transparente com borda superior branca */
+    .form-container {
+  width: calc(80% - 45px); /* 3 dedos de margem de cada lado (~24px) */
+  margin: 0 auto 10px auto; /* margem embaixo separando do footer */
+  background: rgba(255, 255, 255, 0.05); /* fundo translúcido */
+  border: 3px solid rgb(255, 255, 255); /* borda branca */
+  border-radius: 30px; /* arredondado nas 4 pontas */
+  padding: 20px 20px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+}
+
+
+.registro-container {
+  max-width: 90%;
+  margin: 0 auto;
+  background: none;
+  padding: 0;
+}
+
+    .registro-container h2 {
+      margin-bottom: 20px;
+      color: #2c6e49;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 19px;
+    }
+
+    .form-linha {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .campo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 100px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #2c6e49; /* mesma cor do h2, pode mudar se quiser */
+}
+
+
+    input, select {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 12px;
+    }
+
+    .form-botoes {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    button[type="reset"] {
+      background-color: #f44336;
+      color: white;
+    }
+
+    button[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: #555;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      .form-linha {
+        flex-direction: column;
+      }
+
+      input, select {
+        width: 100%;
+      }
+
+      .casal {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fundo verde e branco -->
+  <div class="fundo"></div>
+
+  <!-- Casal reciclando -->
+  <img src="casal reciclando.png" alt="Casal reciclando" class="casal">
+
+  <!-- Conteúdo -->
+  <header>
+    <div class="logo">
+      <img src="Logo Trash Transformers SEM FUNDO.png" alt="Logo Trash Transformers">
+      <span>Trash Transformers</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <section class="registro-container">
+        <h2>Registrar entrega de resíduo</h2>
+  
+        <form>
+          <div class="form-linha">
+            <div class="campo">
+              <label for="quantidade">Quantidade (Kg):</label>
+              <input type="number" id="quantidade" name="quantidade" required>
+            </div>
+  
+            <div class="campo">
+              <label for="tipo-residuo">Tipo de resíduo:</label>
+              <select id="tipo-residuo" name="tipo-residuo" required>
+                <option value="">Selecione</option>
+                <option value="papel">Papel</option>
+                <option value="plastico">Plástico</option>
+                <option value="metal">Metal</option>
+                <option value="vidro">Vidro</option>
+              </select>
+            </div>
+  
+            <div class="campo">
+              <label for="turma">Turma:</label>
+              <input type="text" id="turma" name="turma" required>
+            </div>
+          </div>
+  
+          <div class="campo">
+            <div class="campo">
+              <label for="curso">Curso:</label>
+              <input type="text" id="curso" name="curso" required>
+            </div>
+            </div>
+  
+            <div class="form-linha">
+            <div class="campo">
+              <label for="semestre">Semestre:</label>
+              <select id="semestre" name="semestre" required>
+                <option value="manha">Selecione</option>
+                <option value="manha">1°</option>
+                <option value="tarde">2°</option>
+                <option value="noite">3°</option>
+                <option value="noite">4°</option>
+                <option value="noite">5°</option>
+                <option value="noite">6°</option>
+                <option value="noite">7°</option>
+                <option value="noite">8°</option>
+                <option value="noite">9°</option>
+                <option value="noite">10°</option>
+              </select>
+            </div>
+  
+            <div class="campo">
+              <label for="unidade">Unidade:</label>
+              <select id="unidade" name="unidade" required>
+                <option value="">Selecione</option>
+                <option value="unidade1">UNAMA - ALCINDO CACELA</option>
+                <option value="unidade2">UNAMA - GENTIL</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="form-linha">
+          <div class="campo">
+              <label for="turno">Turno:</label>
+              <select id="turno" name="turno" required>
+              <option value="manha">Selecione</option>
+              <option value="manha">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="noite">Noite</option>
+              </select>
+          </div>
+  
+          <div class="form-botoes">
+            <button type="reset">Limpar</button>
+            <button type="submit">Enviar</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+  
+  <footer>
+    <p>@RedesSociais</p>
+  </footer>

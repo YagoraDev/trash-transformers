@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – Trash Transformers</title>
+  <link rel="icon" href="Logo Trash Transformers SEM FUNDO.png" type="image/png">
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+     :root {
+      --green-light:   #7ed957;
+      --green-light2:  #aec6b3;
+      --green-dark:    #0c8e55;
+      --blue-dark:     #2f5bb7;
+      --accent:        #26a668;
+      --input-bg:      #c0efba;
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html, body { height:100%; font-family: Arial, sans-serif; }
+
+    body {
+      background: linear-gradient(135deg, var(--green-light), var(--green-light2));
+    }
+
+    .wrapper {
+      display: flex;
+      width: 90%;
+      max-width: 1600px;
+      height: 90vh;
+      margin: 5vh auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    /* === LADO ESQUERDO (painel colorido) === */
+    .side-left {
+      flex: 3;
+      position: relative;
+      background: linear-gradient(to bottom, var(--green-dark), var(--blue-dark));
+      color: #fff;
+      overflow: hidden;
+    }
+    .side-left .illustration {
+      width: 100%;           
+      max-width: 550px;      
+      height: auto;          
+      display: block;
+      margin: 1.5rem auto 0;
+    }
+
+    .side-left h1 {
+      position: absolute;
+      top: 15%;
+      left: 15%;
+      font-family: 'League Spartan', sans-serif;
+      font-size: 4rem; 
+    }
+
+    /* === LADO DIREITO (painel branco) === */
+    .side-right {
+      flex: 2;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+    }
+    .login-box .logo {
+      width: 80px;
+      margin-bottom: 1.5rem;
+    }
+    .login-box h2 {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--accent);
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+    .input-group .icon {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 3rem;
+      border: none;
+      border-radius: 25px;
+      background: var(--input-bg);
+      font-size: 1rem;
+    }
+    .signup {
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .signup a {
+      color: #2f5bb7;
+      text-decoration: none;
+    }
+    .login-box button {
+      width: 40%;
+      padding: 0.75rem 0;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(to right, var(--green-light), var(--green-light2));
+      color: #000;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .login-box button:enabled {
+      opacity: 1;
+    }
+
+    /* RESPONSIVIDADE DA PÁGINA */
+
+    @media (max-width: 880px) {
+    .side-left h1 {
+        font-size: 3.8rem;
+        left: 6%;
+      }
+    
+      .side-left .illustration {
+        width: 400px;
+      }
+
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+      }
+
+    .side-left {
+        display: none;
+    }
+
+    .input-group {
+    position: relative;
+    margin-bottom: 1.5rem; 
+    }
+  }
+  
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Painel colorido -->
+    <div class="side-left">
+      <h1>Trash Transformers</h1>
+      <img class="teste" src="Velhinho reciclando.png" alt="Ilustração sustentabilidade" class="illustration">
+    </div>
+
+    <!-- Painel branco -->
+    <div class="side-right">
+      <form class="login-box" id="loginForm">
+        <img src="Logo Trash Transformers SEM FUNDO.png" alt="Ícone login" class="logo">
+        <h2>Login do Usuário</h2>
+
+        <div class="input-group">
+          <span class="icon">👤</span>
+          <input type="text" id="matricula" placeholder="Matrícula" required>
+        </div>
+
+        <div class="input-group">
+          <span class="icon">🔒</span>
+          <input type="password" id="senha" placeholder="Senha" required>
+        </div>
+
+        <div class="signup">
+          Não tem uma conta? <a href="cadastro.html">Criar uma</a>
+        </div>
+
+        <button type="submit" id="loginBtn" disabled>Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const btn  = document.getElementById('loginBtn');
+    const inputs = Array.from(form.querySelectorAll('input'));
+  
+    inputs.forEach(i =>
+      i.addEventListener('input', () => {
+        btn.disabled = !inputs.every(f => f.value.trim() !== '');
+      })
+    );
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const matricula = document.getElementById('matricula').value;
+      const senha = document.getElementById('senha').value;
+  
+      const dadosLogin = {
+        matricula: matricula,
+        senha: senha
+      };
+  
+      try {
+        const resposta = await fetch('http://localhost:8080/usuarios/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dadosLogin)
+        });
+  
+        if (resposta.ok) {
+          const usuario = await resposta.json();
+          alert('Login realizado com sucesso!');
+        } else {
+          alert('Matrícula ou senha incorretos.');
+        }
+      } catch (erro) {
+        console.error('Erro ao tentar fazer login:', erro);
+        alert('Erro ao conectar com o servidor.');
+      }
+    });
+  </script>
+  
+</body>
+</html>
